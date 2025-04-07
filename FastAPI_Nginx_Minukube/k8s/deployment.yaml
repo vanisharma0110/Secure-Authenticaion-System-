@@ -1,0 +1,267 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oauth2-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oauth2-proxy
+  template:
+    metadata:
+      labels:
+        app: oauth2-proxy
+    spec:
+      containers:
+      - name: oauth2-proxy
+        image: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1
+        ports:
+        - containerPort: 4180
+        args:
+        - --provider=azure
+        - --client-id=a94a0481-d8f9-497f-9bad-9f68bd5fd715
+        - --client-secret=6456822e-5465-44ff-8303-530e6be84d8b
+        - --cookie-secret=HEi8AixQxb7dpdll2OBeaQ==
+        - --redirect-url=https://4.157.144.26.nip.io/oauth2/callback
+        - --email-domain=*
+        - --upstream=http://localhost:8080
+        - --http-address=0.0.0.0:4180
+        - --whitelist-domain=4.157.144.26.nip.io
+        env:
+        - name: OAUTH2_PROXY_COOKIE_SECRET
+          value: "HEi8AixQxb7dpdll2OBeaQ=="
+
+
+
+#--------------------------------------------------------------------------------------------------
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: oauth2-proxy
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: oauth2-proxy
+#   template:
+#     metadata:
+#       labels:
+#         app: oauth2-proxy
+#     spec:
+#       containers:
+#       - name: oauth2-proxy
+#         image: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1
+#         ports:
+#         - containerPort: 4180
+#         args:
+#         - --provider=azure
+#         - --client-id=a94a0481-d8f9-497f-9bad-9f68bd5fd715
+#         - --client-secret=6456822e-5465-44ff-8303-530e6be84d8b
+#         - --cookie-secret=HEi8AixQxb7dpdll2OBeaQ==
+#         - --redirect-url=https://4.157.144.26.nip.io/oauth2/callback
+#         - --email-domain=*
+#         env:
+#         - name: OAUTH2_PROXY_COOKIE_SECRET
+#           value: "HEi8AixQxb7dpdll2OBeaQ=="
+
+
+#---------------------------------------------------------------------------------------------------
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: oauth2-proxy
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: oauth2-proxy
+#   template:
+#     metadata:
+#       labels:
+#         app: oauth2-proxy
+#     spec:
+#       containers:
+#       - name: oauth2-proxy
+#         image: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1
+#         ports:
+#         - containerPort: 4180
+#         args:
+#         - --provider=azure
+#         - --client-id=a3bdaf7f-2d78-4482-b98f-28e9c9034637
+#         - --client-secret=94e27f69-9c94-4d6e-baf5-52dd4c46faa5
+#         - --cookie-secret=gye9956AEaED779Z04IpaaxtWK79H1uf
+#         - --redirect-url=https://4.157.144.26.nip.io/oauth2/callback
+#         - --email-domain=*
+#         env:
+#         - name: OAUTH2_PROXY_COOKIE_SECRET
+#           value: "gye9956AEaED779Z04IpaaxtWK79H1uf"
+
+#----------------------------------------------------------------------------------------
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microservice1
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: microservice1
+#   template:
+#     metadata:
+#       labels:
+#         app: microservice1
+#     spec:
+#       containers:
+#       - name: microservice1
+#         image: vaniregistry.azurecr.io/microservice1:latest
+#         imagePullPolicy: Always
+#         ports:
+#         - containerPort: 80
+      
+# ---
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microservice2
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: microservice2
+#   template:
+#     metadata:
+#       labels:
+#         app: microservice2
+#     spec:
+#       containers:
+#       - name: microservice2
+#         image: vaniregistry.azurecr.io/microservice2:latest
+#         imagePullPolicy: Always
+#         ports:
+#         - containerPort: 80
+
+# ---
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microservice3
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: microservice3
+#   template:
+#     metadata:
+#       labels:
+#         app: microservice3
+#     spec:
+#       containers:
+#       - name: microservice3
+#         image: vaniregistry.azurecr.io/microservice3:latest
+#         imagePullPolicy: Always
+#         ports:
+#         - containerPort: 80
+
+# -------------------------------------------------------------------------------------------------------------------------
+ # env:
+        # - name: AZURE_AD_TENANT_ID
+        #   value: "65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274"
+        # - name: AZURE_AD_CLIENT_ID
+        #   value: "a3bdaf7f-2d78-4482-b98f-28e9c9034637"
+        # - name: AZURE_AD_ISSUER
+        #   value: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/v2.0"
+        # - name: AZURE_AD_JWKS_URI
+        #   value: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/discovery/v2.0/keys"
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microservice1
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: microservice1
+#   template:
+#     metadata:
+#       labels:
+#         app: microservice1
+#     spec:
+#       containers:
+#       - name: microservice1
+#         image: microservice1:latest
+#         imagePullPolicy: Never
+#         ports:
+#         - containerPort: 80
+#         # env:
+#         # - name: Default Directory
+#         #   value: "65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274" 
+#         # - name: AZURE_AD_CLIENT_ID
+#         #   value: "a3bdaf7f-2d78-4482-b98f-28e9c9034637" 
+#         # - name: AZURE_AD_ISSUER
+#         #   value: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/v2.0"
+#         # - name: AZURE_AD_JWKS_URI
+#         #   value: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/discovery/v2.0/keys"
+
+
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microservice2
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: microservice2
+#   template:
+#     metadata:
+#       labels:
+#         app: microservice2
+#     spec:
+#       containers:
+#       - name: microservice2
+#         image: microservice2:latest
+#         imagePullPolicy: Never
+#         ports:
+#         - containerPort: 80
+#         # env:
+#         # - name: AZURE_AD_TENANT_ID
+#         #   value: 65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274
+#         # - name: AZURE_AD_CLIENT_ID
+#         #   value: "a3bdaf7f-2d78-4482-b98f-28e9c9034637"  
+#         # - name: AZURE_AD_ISSUER
+#         #   value: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/v2.0"
+#         # - name: AZURE_AD_JWKS_URI
+#         #   value: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/discovery/v2.0/keys"   
+
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microservice3
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: microservice3
+#   template:
+#     metadata:
+#       labels:
+#         app: microservice3
+#     spec:
+#       containers:
+#       - name: microservice3
+#         image: microservice3:latest
+#         imagePullPolicy: Never
+#         ports:
+#         - containerPort: 80
+
+
+# # we can Set up oauth2-proxy for authentication instead of managing it manually in Nginx or the services.
+# # <tenant-id> = 65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274  
+# # <your-client-id> = a3bdaf7f-2d78-4482-b98f-28e9c9034637
+# # <object-id> = 6ea0ae21-5651-4544-8db3-8d187b4fc27c

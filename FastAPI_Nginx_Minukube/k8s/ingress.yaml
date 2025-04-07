@@ -1,0 +1,289 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/auth-url: "https://4.157.144.26.nip.io/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://4.157.144.26.nip.io/oauth2/start"
+spec:
+  rules:
+  - host: 4.157.144.26.nip.io
+    http:
+      paths:
+      - path: /microservice1
+        pathType: Prefix
+        backend:
+          service:
+            name: microservice1
+            port:
+              number: 80
+      - path: /microservice2
+        pathType: Prefix
+        backend:
+          service:
+            name: microservice2
+            port:
+              number: 80
+      - path: /microservice3
+        pathType: Prefix
+        backend:
+          service:
+            name: microservice3
+            port:
+              number: 80
+      - path: /oauth2/
+        pathType: Prefix
+        backend:
+          service:
+            name: oauth2-proxy
+            port:
+              number: 4180
+
+
+
+
+#--------------------------------------------------------------------------------------------------------------
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#     nginx.ingress.kubernetes.io/auth-url: "https://4.157.144.26.nip.io/oauth2/auth"
+#     nginx.ingress.kubernetes.io/auth-signin: "https://4.157.144.26.nip.io/oauth2/start"
+#     nginx.ingress.kubernetes.io/auth-response-headers: "X-Auth-Request-User,X-Auth-Request-Email"
+# spec:
+#   rules:
+#   - host: 4.157.144.26.nip.io
+#     http:
+#       paths:
+#       - path: /microservice1
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice1
+#             port:
+#               number: 80
+#       - path: /microservice2
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice2
+#             port:
+#               number: 80
+#       - path: /microservice3
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice3
+#             port:
+#               number: 80
+#       - path: /oauth2/
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: oauth2-proxy
+#             port:
+#               number: 4180
+
+
+#-----------------------------------------------------------------------------------------------------
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#     nginx.ingress.kubernetes.io/auth-url: "https://4.157.144.26.nip.io/oauth2/auth"
+#     nginx.ingress.kubernetes.io/auth-signin: "https://4.157.144.26.nip.io/oauth2/start"
+# spec:
+#   rules:
+#   - host: 4.157.144.26.nip.io
+#     http:
+#       paths:
+#       - path: /microservice1
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice1
+#             port:
+#               number: 80
+#       - path: /microservice2
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice2
+#             port:
+#               number: 80
+#       - path: /microservice3
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice3
+#             port:
+#               number: 80
+#       - path: /oauth2/
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: oauth2-proxy
+#             port:
+#               number: 4180
+
+
+#----------------------------------------------------------------------------------------------
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#     nginx.ingress.kubernetes.io/auth-url: "https://4.157.144.26.nip.io/oauth2/auth"
+#     nginx.ingress.kubernetes.io/auth-signin: "https://4.157.144.26.nip.io/oauth2/start"
+# spec:
+#   rules:
+#   - host: 4.157.144.26.nip.io
+#     http:
+#       paths:
+#       - path: /microservice1
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice1
+#             port:
+#               number: 80
+#       - path: /microservice2
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice2
+#             port:
+#               number: 80
+#       - path: /microservice3
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice3
+#             port:
+#               number: 80
+#       - path: /oauth2/
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: oauth2-proxy
+#             port:
+#               number: 4180
+
+
+#-----------------------------------------------------------------------------------------------------------------
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+#     nginx.ingress.kubernetes.io/auth-url: "https://4.157.144.26.nip.io/oauth2/auth"
+#     nginx.ingress.kubernetes.io/auth-signin: "https://4.157.144.26.nip.io/oauth2/start"
+# spec:
+#   rules:
+#   - host: 4.157.144.26.nip.io
+#     http:
+#       paths:
+#       - path: /microservice1
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice1
+#             port:
+#               number: 80
+#       - path: /microservice2
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice2
+#             port:
+#               number: 80
+#       - path: /microservice3
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice3
+#             port:
+#               number: 80
+
+
+#------------------------------------------------------------------------------------------------------------------
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#     # nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#   - host: 127.0.0.1.nip.io
+#     http:
+#       paths:
+#       - path: /microservice1
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice1
+#             port:
+#               number: 80
+#       - path: /microservice2
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice2
+#             port:
+#               number: 80
+#       - path: /microservice3
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: microservice3
+#             port:
+#               number: 80
+
+
+# #--------------------------------------------------------------------------------------------------------------------------
+# # apiVersion: networking.k8s.io/v1
+# # kind: Ingress
+# # metadata:
+# #   name: nginx-ingress
+# #   annotations:
+# #     nginx.ingress.kubernetes.io/rewrite-target: /
+# #     # nginx.ingress.kubernetes.io/auth-url: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/oauth2/v2.0/authorize"
+# #     # nginx.ingress.kubernetes.io/auth-signin: "https://login.microsoftonline.com/65ef4ed7-bb2b-4f70-bb9e-d2c00bc42274/oauth2/v2.0/token"
+# #     # nginx.ingress.kubernetes.io/auth-response-headers: "x-authenticated-user-id,x-authenticated-user-email"
+# # spec:
+# #   rules:
+# #   - host: 127.0.0.1.nip.io
+# #     http:
+# #       paths:
+# #       - path: /microservice1
+# #         pathType: Prefix
+# #         backend:
+# #           service:
+# #             name: microservice1
+# #             port:
+# #               number: 80
+# #       - path: /microservice2
+# #         pathType: Prefix
+# #         backend:
+# #           service:
+# #             name: microservice2
+# #             port:
+# #               number: 80
+# #       - path: /microservice3
+# #         pathType: Prefix
+# #         backend:
+# #           service:
+# #             name: microservice3
+# #             port:
+# #               number: 80
+

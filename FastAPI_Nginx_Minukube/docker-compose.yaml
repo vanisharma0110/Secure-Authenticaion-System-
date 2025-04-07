@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  microservice1:
+    build: ./microservice1
+    container_name: microservice1
+
+  microservice2:
+    build: ./microservice2
+    container_name: microservice2
+
+  microservice3:
+    build: ./microservice3
+    container_name: microservice3
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+
+  oauth2-proxy:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1
+    container_name: oauth2-proxy
+    environment:
+      - OAUTH2_PROXY_PROVIDER=azure
+      - OAUTH2_PROXY_CLIENT_ID=a94a0481-d8f9-497f-9bad-9f68bd5fd715
+      - OAUTH2_PROXY_CLIENT_SECRET=6456822e-5465-44ff-8303-530e6be84d8b
+      - OAUTH2_PROXY_COOKIE_SECRET=HEi8AixQxb7dpdll2OBeaQ==
+      - OAUTH2_PROXY_REDIRECT_URL=https://4.157.144.26.nip.io/oauth2/callback
+      - OAUTH2_PROXY_EMAIL_DOMAIN=*
+    ports:
+      - "4180:4180"
+
+
+
+#-----------------------------------------------------------------------------------------------
+# version: '3.8'
+
+# services:
+#   microservice1:
+#     build: ./microservice1
+#     container_name: microservice1
+
+#   microservice2:
+#     build: ./microservice2
+#     container_name: microservice2
+
+#   microservice3:
+#     build: ./microservice3
+#     container_name: microservice3
+
+#   nginx:
+#     build: ./nginx
+#     container_name: nginx
+#     ports:
+#       - "80:80"
